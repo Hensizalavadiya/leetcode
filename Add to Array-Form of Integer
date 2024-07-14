@@ -1,0 +1,28 @@
+class Solution(object):
+    def addToArrayForm(self, num, k):
+        """
+        :type num: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+
+        carry = 0
+        i = len(num)-1
+
+        while k or carry:
+            if i >= 0:
+                carry += num[i]
+            new_val = carry + k%10
+            carry,rem = divmod(new_val,10)
+
+            if i >= 0:
+                num[i] = rem
+
+            else:
+                num.insert(0,rem)
+            i-=1
+            k//=10
+        return num 
+
+
+         
