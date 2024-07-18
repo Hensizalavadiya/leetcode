@@ -1,0 +1,22 @@
+class Solution(object):
+    def sortedSquares(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        sqr = []
+        for val in nums:
+            sqr.append(val**2)
+
+        l,r = 0,len(sqr)-1   
+        result = []
+
+        while l<=r:
+            if sqr[l] > sqr[r]:
+                result.append(sqr[l])
+                l += 1
+
+            else:
+                result.append(sqr[r])
+                r -= 1    
+        return result [::-1]     
