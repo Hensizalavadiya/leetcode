@@ -1,0 +1,18 @@
+class Solution(object):
+    def targetIndices(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        less_than_target = 0
+        equal_to_target = 0
+
+        for num in nums:
+            if num<target:
+                less_than_target += 1
+            elif num == target:
+                equal_to_target += 1
+
+        return list(range(less_than_target,less_than_target+equal_to_target))            
+        
