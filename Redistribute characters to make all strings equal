@@ -1,0 +1,13 @@
+def makeEqual(words, chars):
+    char_freq = {}
+    for char in chars:
+        char_freq[char] = char_freq.get(char, 0) + 1
+
+    for word in words:
+        word_freq = {}
+        for char in word:
+            word_freq[char] = word_freq.get(char, 0) + 1
+        for char, freq in word_freq.items():
+            if freq > char_freq.get(char, 0):
+                return False
+    return True
