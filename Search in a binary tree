@@ -1,0 +1,17 @@
+class Solution:
+    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if root is None:
+            return None
+        
+        # If the current node's value matches the search value, return the node
+        if root.val == val:
+            return root
+        
+        # If the value is less than the current node's value, search in the left subtree
+        elif val < root.val:
+            return self.searchBST(root.left, val)
+        
+        # If the value is greater than the current node's value, search in the right subtree
+        else:
+            return self.searchBST(root.right, val)
+        
