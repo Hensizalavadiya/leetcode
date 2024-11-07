@@ -1,0 +1,27 @@
+class Solution(object):
+    def sortedListToBST(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: Optional[TreeNode]
+        """
+        def findMiddle(left, right):
+            slow = left
+            fast = left
+            while fast != right and fast.next != right:
+                slow = slow.next
+                fast = fast.next.next
+            return slow
+
+        def convert(left, right):
+            if left == right:
+                return None
+            
+            mid = findMiddle(left, right)
+            node = TreeNode(mid.val)
+            node.left = convert(left, mid)
+            node.right = convert(mid.next, right)
+            return node
+
+        return convert(head, None)
+
+        
