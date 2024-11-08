@@ -1,0 +1,25 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        def in_order(node):
+            if not node:
+                return []
+            return in_order(node.left) + [node.val] + in_order(node.right)
+
+        def sorted_array_to_bst(nums):
+            if not nums:
+                return None
+            mid = len(nums) // 2
+            root = TreeNode(nums[mid])
+            root.left = sorted_array_to_bst(nums[:mid])
+            root.right = sorted_array_to_bst(nums[mid + 1:])
+            return root
+
+        sorted_values = in_order(root)
+        return sorted_array_to_bst(sorted_values)
+        
